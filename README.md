@@ -1,0 +1,61 @@
+# Agentic Deployment Testing Project
+
+Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle 5 day AI course -- https://www.kaggle.com/code/kaggle5daysofai/day-5b-agent-deployment.
+
+
+## Setup
+
+1. Create a virtual environment:
+   ```bash
+   python3 -m venv venv
+   ```
+
+2. Activate the virtual environment:
+   ```bash
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Install Google Cloud:
+    Agent Engine is needed to confirm agent deployment.
+    ```bash
+    brew update && brew install --cask google-cloud-sdk
+    pip install --upgrade "google-cloud-aiplatform[agent_engines,adk]"
+    ```
+
+5. Login account
+    ```bash
+    gcloud auth application-default login
+    ```
+
+
+## Agent
+
+1. Build a new Agent. This example uses Weather App agent using fake data.
+
+2. Push the Agent to GCP:
+    ```bash
+    adk deploy agent_engine --project=$PROJECT_ID --region=us-east4 weather-agent --agent_engine_config_file=src/.agent_engine_config.json
+    ```
+    Once the deployment is complete, confirm on the gcp web console.
+
+3. Test Deployment Using Python:
+    Use google-cloud-sdk to test the deployment. This test finds the last deployed Agent using agent_engines.
+    ```bash
+    python3 weather-agent/main.py
+    ```
+
+    Method to run --
+    ```python
+    await test_deployment.test_agent_deployment()
+    ```
+
+4. Cleanup Deployment:
+    Must cleanup otherwise potential for charge.
+    ```python
+    await test_deployment.cleanup_deployed_agents()
+    ```
