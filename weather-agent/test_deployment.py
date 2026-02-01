@@ -28,8 +28,8 @@ async def test_agent_deployment():
 async def cleanup_deployed_agents():
     print("🧹 Starting Cleanup of Deployed Agents...")
     vertexai.init(
-        project="gemini-kaggle-project-486119",
-        location="us-east4",
+        project=os.getenv("GOOGLE_CLOUD_PROJECT"),
+        location=os.getenv("GOOGLE_CLOUD_LOCATION"),
     )
     agents_list = list(agent_engines.list())
     for agent in agents_list:
