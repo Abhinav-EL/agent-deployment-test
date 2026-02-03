@@ -44,7 +44,7 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
     Once the deployment is complete, confirm on the gcp web console.
 
 3. Test Deployment Using Python:
-    Use google-cloud-sdk to test the deployment. This test finds the last deployed Agent using agent_engines.
+    Use google-cloud-sdk to test the deployment. This test finds the last deployed Agent using agent_engines. https://console.cloud.google.com/vertex-ai/agents/agent-engines
     ```bash
     python3 tests/main.py
     ```

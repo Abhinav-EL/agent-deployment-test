@@ -2,12 +2,18 @@ from dotenv import load_dotenv
 from google.adk.agents import Agent
 import vertexai
 import os
+import logging
 
 load_dotenv()
 
 vertexai.init(
     project=os.getenv("GOOGLE_CLOUD_PROJECT"),
     location=os.getenv("GOOGLE_CLOUD_LOCATION"),
+)
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
 )
 
 def get_weather(city: str) -> dict:
@@ -34,10 +40,12 @@ def get_weather(city: str) -> dict:
     }
 
     city_lower = city.lower()
+    logging.info(f"Fetching weather for city: {city_lower}")
     if city_lower in weather_data:
         return weather_data[city_lower]
     else:
         available_cities = ", ".join([c.title() for c in weather_data.keys()])
+        logging.error(f"Only weather available for cities: {available_cities}")
         return {
             "status": "error",
             "error_message": f"Weather information for '{city}' is not available. Try: {available_cities}"
