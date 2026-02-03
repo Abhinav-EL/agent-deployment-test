@@ -1,6 +1,6 @@
 # Agentic Deployment Testing Project
 
-Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle 5 day AI course -- https://www.kaggle.com/code/kaggle5daysofai/day-5b-agent-deployment.
+Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle course.
 
 
 ## Setup
