@@ -39,23 +39,27 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle 5
 
 2. Push the Agent to GCP:
     ```bash
-    adk deploy agent_engine --project=$PROJECT_ID --region=us-east4 weather-agent --agent_engine_config_file=src/.agent_engine_config.json
+    adk deploy agent_engine --project=$PROJECT_ID --region=us-east4 weather-agent --agent_engine_config_file=weather-agent/.agent_engine_config.json --trace_to_cloud
     ```
     Once the deployment is complete, confirm on the gcp web console.
 
 3. Test Deployment Using Python:
     Use google-cloud-sdk to test the deployment. This test finds the last deployed Agent using agent_engines.
     ```bash
-    python3 weather-agent/main.py
+    python3 tests/main.py
     ```
 
-    Method to run --
+    Method to run
     ```python
     await test_deployment.test_agent_deployment()
     ```
 
 4. Cleanup Deployment:
     Must cleanup otherwise potential for charge.
+    ```bash
+    python3 tests/main.py
+    ```
+    Method
     ```python
     await test_deployment.cleanup_deployed_agents()
     ```

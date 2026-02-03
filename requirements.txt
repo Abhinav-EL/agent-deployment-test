@@ -2,6 +2,7 @@
 # Add your project dependencies here
 google-adk
 opentelemetry-instrumentation-google-genai
+python-dotenv
 
 # Development dependencies (optional)
 # pytest==7.4.0

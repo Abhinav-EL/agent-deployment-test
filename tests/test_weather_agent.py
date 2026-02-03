@@ -1,14 +1,13 @@
 import os
-import vertexai
+
 from vertexai import agent_engines
 
 async def test_agent_deployment():
-    print("✨ Starting Deployment Test...")
-    # Initialize Vertex AI
-    vertexai.init(
-        project=os.getenv("GOOGLE_CLOUD_PROJECT"),
-        location=os.getenv("GOOGLE_CLOUD_LOCATION"),
-    )
+    if not os.getenv("GOOGLE_CLOUD_PROJECT") or not os.getenv("GOOGLE_CLOUD_LOCATION"):
+        print("❌ GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION must be set.")
+        return
+    
+    print("✨ Starting Deployment Test for : ", os.getenv("GOOGLE_CLOUD_LOCATION"))
     # Get the most recently deployed agent
     agents_list = list(agent_engines.list())
     if agents_list:
@@ -18,8 +17,8 @@ async def test_agent_deployment():
 
         # Test a sample query
         async for item in remote_agent.async_stream_query(
-            message="What is the weather in Tokyo?",
-            user_id="user_42",
+            message="What is the weather in NYC?",
+            user_id="user_43",
         ):
             print(item)
     else:
@@ -27,10 +26,7 @@ async def test_agent_deployment():
 
 async def cleanup_deployed_agents():
     print("🧹 Starting Cleanup of Deployed Agents...")
-    vertexai.init(
-        project=os.getenv("GOOGLE_CLOUD_PROJECT"),
-        location=os.getenv("GOOGLE_CLOUD_LOCATION"),
-    )
+
     agents_list = list(agent_engines.list())
     for agent in agents_list:
         print(f"Deleting agent: {agent.resource_name}")

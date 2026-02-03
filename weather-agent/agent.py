@@ -1,6 +1,9 @@
+from dotenv import load_dotenv
 from google.adk.agents import Agent
 import vertexai
 import os
+
+load_dotenv()
 
 vertexai.init(
     project=os.getenv("GOOGLE_CLOUD_PROJECT"),
