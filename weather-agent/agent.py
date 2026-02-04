@@ -3,6 +3,10 @@ from google.adk.agents import Agent
 import vertexai
 import os
 import logging
+from typing import Optional
+from google.genai import types 
+from google.adk.models import LlmResponse, LlmRequest
+from google.adk.agents.callback_context import CallbackContext
 
 load_dotenv()
 
@@ -15,6 +19,24 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
 )
+
+cities = ["San Francisco", "New York", "London", "Tokyo", "Paris"]
+
+#TODO: Enhance city extraction
+def check_city_in_question(
+    callback_context: CallbackContext, llm_request: LlmRequest
+) -> Optional[LlmResponse]:
+    """Extracts city name from the user's question. """
+    logging.info(f"Checking city in question for agent: {callback_context.agent_name}")
+    llm_context = llm_request.contents
+    logging.info(f"Checking city in question: {llm_context}")
+    if not llm_context:
+        return LlmResponse(
+            content=types.Content(
+                role="model",
+                parts=[types.Part(text="LLM call was blocked by before_model_callback.")],
+            ))
+    return None
 
 def get_weather(city: str) -> dict:
     """
@@ -65,5 +87,6 @@ root_agent = Agent(
 
     Be helpful and concise in your responses.
     """,
-    tools=[get_weather]
+    tools=[get_weather],
+    before_model_callback=check_city_in_question # Block LLM calls without appropriate city
 )
