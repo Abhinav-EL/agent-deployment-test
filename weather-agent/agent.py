@@ -22,11 +22,10 @@ logging.basicConfig(
 
 cities = ["San Francisco", "New York", "London", "Tokyo", "Paris"]
 
-#TODO: Enhance city extraction
+#TODO: Extracts city name from the user's question.
 def check_city_in_question(
     callback_context: CallbackContext, llm_request: LlmRequest
 ) -> Optional[LlmResponse]:
-    """Extracts city name from the user's question. """
     logging.info(f"Checking city in question for agent: {callback_context.agent_name}")
     llm_context = llm_request.contents
     logging.info(f"Checking city in question: {llm_context}")
@@ -34,7 +33,7 @@ def check_city_in_question(
         return LlmResponse(
             content=types.Content(
                 role="model",
-                parts=[types.Part(text="LLM call was blocked by before_model_callback.")],
+                parts=[types.Part(text="LLM call was blocked by before_model_callback because it has no contents.")],
             ))
     return None
 

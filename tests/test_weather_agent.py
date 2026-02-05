@@ -17,8 +17,8 @@ async def test_agent_deployment():
 
         # Test a sample query
         async for item in remote_agent.async_stream_query(
-            message="What is the weather in NYC?",
-            user_id="user_43",
+            message="What is the weather in SF?",
+            user_id="user_44",
         ):
             print(item)
     else:
