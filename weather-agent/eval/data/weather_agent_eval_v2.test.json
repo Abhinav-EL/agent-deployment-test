@@ -22,5 +22,23 @@
       }
     ],
     "reference": "The weather in New York is cloudy with a temperature of 65°F (18°C)."
+  },
+   {
+    "query": "What is the weather in Mars?",
+    "expected_tool_use": [
+        {
+        "tool_name": "get_weather",
+        "tool_input": {
+          "city": "Mars"
+        }
+      }
+    ],
+    "reference": "The weather in Mars is not available. Try: San Francisco, New York, London, Tokyo, Paris"
+  },
+   {
+    "query": "What is the weather here?",
+    "expected_tool_use": [
+    ],
+    "reference": "I need to know the city name to provide weather information. Could you please tell me which city you are referring to?"
   }
 ]

@@ -84,7 +84,7 @@ root_agent = Agent(
 
     1. Identify the city name from their question.
     2. Use the get_weather tool to fetch current weather information
-    3. Respond in a friendly, conversational tone
+    3. Conversational tone is not needed, just provide the weather report based on the tool's response.
     4. If there is an error from get_weather tool, inform the user.
 
     Be helpful and concise in your responses.
