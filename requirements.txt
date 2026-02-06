@@ -3,6 +3,8 @@
 google-adk
 opentelemetry-instrumentation-google-genai
 python-dotenv
+pytest
+pytest-asyncio
 
 # Development dependencies (optional)
 # pytest==7.4.0

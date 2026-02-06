@@ -1,0 +1,50 @@
+[{
+  "eval_set_id": "weather_assistant_agent_eval_set",
+  "name": "weather_assistant",
+  "description": "This is an eval set that is used for unit testing correct behavior of the weather_assistant",
+  "eval_cases": [
+    {
+      "eval_id": "123",
+      "conversation": [
+        {
+          "invocation_id": "e-d8290f72-a23b-4e2e-8d36-c344f5c6156c",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What is the weather in SF?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The weather in San Francisco is sunny with a temperature of 72°F (22°C)."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {
+                  "city": "San Francisco"
+                },
+                "name": "get_weather"
+              }
+            ],
+            "intermediate_responses": [{
+                "status": "success",
+                "report": "The weather in San Francisco is sunny with a temperature of 72°F (22°C)."
+            }]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "weather_assistant",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}]
