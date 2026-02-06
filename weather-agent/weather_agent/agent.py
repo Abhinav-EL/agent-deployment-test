@@ -20,9 +20,8 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
 )
 
-cities = ["San Francisco", "New York", "London", "Tokyo", "Paris"]
-
 #TODO: Extracts city name from the user's question.
+# Reference: https://github.com/google/adk-python/blob/main/src/google/adk/models/llm_request.py
 def check_city_in_question(
     callback_context: CallbackContext, llm_request: LlmRequest
 ) -> Optional[LlmResponse]:
@@ -36,6 +35,10 @@ def check_city_in_question(
                 parts=[types.Part(text="LLM call was blocked by before_model_callback because it has no contents.")],
             ))
     return None
+
+def get_available_cities() -> list:
+    """Returns a list of available cities."""
+    return ["San Francisco", "New York", "London", "Tokyo", "Paris"]
 
 def get_weather(city: str) -> dict:
     """
@@ -65,7 +68,7 @@ def get_weather(city: str) -> dict:
     if city_lower in weather_data:
         return weather_data[city_lower]
     else:
-        available_cities = ", ".join([c.title() for c in weather_data.keys()])
+        available_cities = ", ".join([c.title() for c in get_available_cities()])
         logging.error(f"Only weather available for cities: {available_cities}")
         return {
             "status": "error",
@@ -79,10 +82,10 @@ root_agent = Agent(
     instruction="""
     You are a friendly weather assistant. When users ask about the weather:
 
-    1. Identify the city name from their question
+    1. Identify the city name from their question.
     2. Use the get_weather tool to fetch current weather information
     3. Respond in a friendly, conversational tone
-    4. If the city isn't available, suggest one of the available cities
+    4. If there is an error from get_weather tool, inform the user.
 
     Be helpful and concise in your responses.
     """,

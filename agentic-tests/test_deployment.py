@@ -12,7 +12,6 @@ async def test_agent_deployment():
     agents_list = list(agent_engines.list())
     if agents_list:
         remote_agent = agents_list[0]  # Get the first (most recent) agent
-        client = agent_engines
         print(f"✅ Connected to deployed agent: {remote_agent.resource_name}")
 
         # Test a sample query

@@ -39,14 +39,14 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
 
 2. Push the Agent to GCP:
     ```bash
-    adk deploy agent_engine --project=$PROJECT_ID --region=us-east4 weather-agent --agent_engine_config_file=weather-agent/.agent_engine_config.json --trace_to_cloud
+    adk deploy agent_engine --project=$PROJECT_ID --region=us-east4 weather-agent/weather_agent --agent_engine_config_file=weather-agent/weather_agent/agent_engine_config.json --trace_to_cloud
     ```
     Once the deployment is complete, confirm on the gcp web console.
 
 3. Test Deployment Using Python:
     Use google-cloud-sdk to test the deployment. This test finds the last deployed Agent using agent_engines. https://console.cloud.google.com/vertex-ai/agents/agent-engines
     ```bash
-    python3 tests/main.py
+    python agentic-tests/test_main.py
     ```
 
     Method to run
@@ -57,7 +57,7 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
 4. Cleanup Deployment:
     Must cleanup otherwise potential for charge.
     ```bash
-    python3 tests/main.py
+    python agentic-tests/test_main.py
     ```
     Method
     ```python

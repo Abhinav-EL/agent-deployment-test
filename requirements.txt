@@ -1,6 +1,7 @@
 # Core dependencies
 # Add your project dependencies here
 google-adk
+google-adk[eval]
 opentelemetry-instrumentation-google-genai
 python-dotenv
 pytest

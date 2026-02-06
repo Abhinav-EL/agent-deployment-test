@@ -1,0 +1,26 @@
+[
+  {
+    "query": "What is the weather in San Francisco?",
+    "expected_tool_use": [
+        {
+        "tool_name": "get_weather",
+        "tool_input": {
+          "city": "San Francisco"
+        }
+      }
+    ],
+    "reference": "The weather in San Francisco is sunny with a temperature of 72°F (22°C)."
+  },
+  {
+    "query": "What is the weather in New York?",
+    "expected_tool_use": [
+        {
+        "tool_name": "get_weather",
+        "tool_input": {
+          "city": "New York"
+        }
+      }
+    ],
+    "reference": "The weather in New York is cloudy with a temperature of 65°F (18°C)."
+  }
+]
