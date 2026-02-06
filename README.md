@@ -69,3 +69,14 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
     ```bash
     pytest weather-agent/eval/test_eval.py
     ```
+
+## Learnings
+### Testing
+1. Increasing the thresholds means output needs to match closer to the threshold.
+2. Asking the Agent to be "conversational" and "helpful", caused it to spit lot more words that could break the threshold.
+3. Another intersting concequence of being helpful was the that if a random city was given as inpout, the Agent would respond with error correctly, but suggest random list of cities to use next time.
+
+### General
+1. Some of the docs are outdated. But the code on git is readable and even has examples.
+2. The project structure can be tricky. I have followed the structure from the examples.
+3. Can be tricky to find all the required packages more than expected.
