@@ -63,3 +63,9 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
     ```python
     await test_deployment.cleanup_deployed_agents()
     ```
+
+5. Evaluate Agent repsonses:
+    Using data in weather_agent_eval_v2.test.json. Built using (some outdated info), https://google.github.io/adk-docs/evaluate/#first-approach-using-a-test-file
+    ```bash
+    pytest weather-agent/eval/test_eval.py
+    ```
