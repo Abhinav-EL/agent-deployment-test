@@ -1,6 +1,6 @@
 # Agentic Deployment Testing Project
 
-Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle course.
+Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle course. For local development, Gemni API keys are needed, that can be copied from here https://aistudio.google.com/app/api-keys
 
 
 ## Setup
@@ -20,14 +20,17 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
    pip install -r requirements.txt
    ```
 
-4. Install Google Cloud:
+4. Install Google Cloud & its dependencies:
     Agent Engine is needed to confirm agent deployment.
     ```bash
     brew update && brew install --cask google-cloud-sdk
+    ```
+    Add dependencies (most in Requirements.txt)
+    ```bash
     pip install --upgrade "google-cloud-aiplatform[agent_engines,adk]"
     ```
 
-5. Login account
+5. Login into GCloung account. If you don't have a GCP account yet, then create free Google Cloud account https://cloud.google.com/free?hl=en.
     ```bash
     gcloud auth application-default login
     ```
@@ -77,6 +80,6 @@ Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle c
 3. Another intersting concequence of being helpful was the that if a random city was given as inpout, the Agent would respond with error correctly, but suggest random list of cities to use next time.
 
 ### General
-1. Some of the docs are outdated. But the code on git is readable and even has examples.
+1. Some of the docs are outdated. But the code on git (https://github.com/google/adk-python) is readable and has examples with evals.
 2. The project structure can be tricky. I have followed the structure from the examples.
-3. Can be tricky to find all the required packages more than expected.
+3. There is a limit to Google AI studio. Errors will indicate when that limit is crossed. This can be checked here - https://aistudio.google.com/projects.

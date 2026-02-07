@@ -1,11 +1,13 @@
 # Core dependencies
 # Add your project dependencies here
-google-adk
-google-adk[eval]
-opentelemetry-instrumentation-google-genai
 python-dotenv
 pytest
 pytest-asyncio
+google-adk
+google-adk[eval]
+google-cloud-aiplatform[agent_engines,adk]
+opentelemetry-instrumentation-google-genai
+
 
 # Development dependencies (optional)
 # pytest==7.4.0
