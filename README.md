@@ -1,4 +1,4 @@
-# Agentic Deployment Testing Project
+# Agent Deployment Test Project
 
 Test AI Agent deployment using Google GCP and ADK. This is based on the Kaggle course. For local development, Gemni API keys are needed, that can be copied from here https://aistudio.google.com/app/api-keys
 
